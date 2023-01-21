@@ -23,3 +23,7 @@ function resetBoard() {
     squares.forEach((div) => div.remove());
     populateBoard();
 };
+
+function colorChoice(choice) {
+    color = choice;
+}
