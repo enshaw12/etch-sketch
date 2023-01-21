@@ -1,12 +1,18 @@
 let color = 'black';
 let board = document.querySelector('.board');
-let squares = board.querySelectorAll('div');
 
 
-function populateBoard() {
-    board.style.gridTemplateColumns = 'repeat(16, 1fr)';
-    board.style.gridTemplateRows = 'repeat(16, 1fr)';
-    for (i = 0; i < 256 ; i++) {
+
+
+function populateBoard(size) {
+    let board = document.querySelector('.board');
+    let squares = board.querySelectorAll('div');
+    squares.forEach((div) => div.remove());
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    amountDivs = size * size;
+    for (i = 0; i < amountDivs ; i++) {
         let square = document.createElement('div');
         square.style.backgroundColor = 'white';
         square.addEventListener('mouseover', colorChange)
@@ -14,12 +20,11 @@ function populateBoard() {
     }
 };
 
-populateBoard();
+populateBoard(16);
 
-function resetBoard() {
+function resetBoard(value) {
     let squares = board.querySelectorAll('div');
-    squares.forEach((div) => div.remove());
-    populateBoard();
+    squares.forEach((square) => square.style.backgroundColor = 'white');
 };
 
 function colorChoice(choice) {
@@ -30,4 +35,13 @@ function colorChange() {
     this.style.backgroundColor = color
 }
 
+function changeBoardSize(userInput) {
+    if (userInput >= 2 && userInput <= 100) {
+        populateBoard(userInput);
+    } else {
+        console.log("input must be greater than 1 and less than 101");
+    }
+    
+
+}
 
