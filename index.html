@@ -14,13 +14,14 @@
         <div class="btns">
             <button onclick="colorChoice('black')">Black</button>
             <button onclick="colorChoice('blue')">Blue</button>
+            <button onclick="colorChoice('red')">Red</button>
             <button onclick="colorChoice('white')">Eraser</button>
             <button onclick="resetBoard()">Reset</button>
         </div>
         <input
         type="text"
         value="16"
-        onchange="populateBoard(this.value)"
+        onchange="changeBoardSize(this.value)"
         />
         <button>Enter</button>
 
